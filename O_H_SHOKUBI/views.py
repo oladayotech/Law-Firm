@@ -49,4 +49,38 @@ def news_detail(request, headline_for_url):
     return render(request,'news_detail.html', {'news':news_model})
 
 def people(request):
-    return render(request, 'people.html')
+    lawyers = models.Lawyer.objects.all()
+    
+    paginator = Paginator(lawyers, 9)
+    
+    # Get current page number from URL
+    page_number = request.GET.get('page')
+    
+    # Get page object
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'people.html', {'page_obj':page_obj})
+
+def people_info(request, name_for_url):
+    lawyers = models.Lawyer.objects.get(name_for_url=name_for_url)
+    return render(request, 'people_info.html', {'lawyer':lawyers})
+
+def base(request):
+    return render(request, 'base.html')
+
+def about(request):
+    return render(request, 'about.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def careers(request):
+    return render(request, 'careers.html')
+
+def practices(request):
+    practice_area = models.Practice.objects.all()
+    return render(request, 'practices.html', {'practice_area':practice_area})
+
+def practices_info(request, practice_name_for_url):
+    practice_area = models.Practice.objects.get(practice_name_for_url=practice_name_for_url)
+    practice_lawyers = practice_area.lawyers.all()
+    return render(request, 'practices_info.html', {'practice_lawyers':practice_lawyers, 'practice_area':practice_area})

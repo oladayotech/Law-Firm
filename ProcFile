@@ -1,0 +1,1 @@
+web: gunicorn Law_firm.wsgi:application

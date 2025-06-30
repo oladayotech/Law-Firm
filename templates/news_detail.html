@@ -1,41 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{{ news.headline }}</title>
-  <link rel="shortcut icon" href="{% static 'images\file.jpg' %}" type="image/x-icon">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Dynamic SEO title -->
+  <title>{{ news.headline }} | O.H Shokubi & Co.</title>
+  
+  <!-- Dynamic SEO description -->
+  <meta name="description" content="{{ news.headline }} - Read the latest legal insights and updates from O.H Shokubi & Co.">
+  
+  <!-- Keywords (optional) -->
+  <meta name="keywords" content="Law Firm, Nigeria, Arbitration, Lagos, IP Law, {{ news.headline }}">
+
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="{{ news.headline }}">
+  <meta property="og:description" content="{{ news.headline }} - Read more from O.H Shokubi & Co.">
+  <meta property="og:image" content="{{ news.news_images.url }}">
+  <meta property="og:url" content="{{ request.build_absolute_uri }}">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ news.headline }}">
+  <meta name="twitter:description" content="{{ news.headline }}">
+  <meta name="twitter:image" content="{{ news.news_images.url }}">
 </head>
 
 <body style="font-family: 'Segoe UI', sans-serif; background-color: #fdf8ee; color: #1c1c1c; margin: 0; padding: 0;">
-
-<!-- ===========================
-         Navbar
-=========================== -->
-<nav class="navbar navbar-expand-lg navbar-light sticky-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">
-      <img src="{% static 'images/file.jpg' %}" width="30" alt="O.H Shokubi & Co. logo">
-      O.H Shokubi & Co.
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="#who-we-are-section">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">People</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Expertise</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Insights & Innovation</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Careers</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
 
 <!-- ===========================
          News Hero with Background Image
@@ -87,106 +81,6 @@
   </div>
 </section>
 
-    <!-- Footer -->
-    <footer class="footer fade-up">
-        <div class="container">
-
-        <div class="row footer-columns d-flex justify-content-between">
-
-            <!-- Column 1: Logo and Social -->
-            <div class="col-md-3 mb-4">
-            <img src="{% static 'images/file.jpg' %}" width="40" alt="logo">
-            <p class="logo-text mt-2">
-                Beyond the delivery of excellent legal services, our strength is our people and our sector knowledge; our market is Africa; our focus is you!
-            </p>
-            <div class="footer-socials d-flex align-items-center gap-3 mt-3">
-                <a href="https://twitter.com" target="_blank"><i class="fab fa-x-twitter text-white"></i></a>
-                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in text-white"></i></a>
-                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram text-white"></i></a>
-                <a href="mailto:arogundadeolawunmi@gmail.com" target="_blank"><i class="fa fa-envelope text-white"></i></a>
-            </div>
-            <p class="footer-subscribe mt-3">Subscribe to JEE Insights</p>
-            </div>
-
-            <!-- Navigation Columns -->
-            <div class="col-md-8">
-            <div class="row">
-
-                <!-- About -->
-                <div class="col-md-3 mb-3">
-                <button class="footer-section-title d-md-none" data-bs-toggle="collapse" data-bs-target="#footer-about" aria-expanded="false">
-                    About
-                </button>
-                <h5 class="footer-section-title d-none d-md-block">About</h5>
-                <ul class="footer-links collapse d-md-block" id="footer-about">
-                    <li><a href="#who-we-are-section">Who We Are</a></li>
-                    <li><a href="#">Our People</a></li>
-                    <li><a href="#">Careers & Culture</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                </div>
-
-                <!-- Expertise -->
-                <div class="col-md-3 mb-3">
-                <button class="footer-section-title d-md-none" data-bs-toggle="collapse" data-bs-target="#footer-expertise" aria-expanded="false">
-                    Expertise
-                </button>
-                <h5 class="footer-section-title d-none d-md-block">Expertise</h5>
-                <ul class="footer-links collapse d-md-block" id="footer-expertise">
-                    <li><a href="#">Sectors</a></li>
-                    <li><a href="#">Practice Areas</a></li>
-                    <li><a href="#">Africa Expertise</a></li>
-                    <li><a href="#">Africa IP Practice</a></li>
-                </ul>
-                </div>
-
-                <!-- Insights & Innovation -->
-                <div class="col-md-3 mb-3">
-                <button class="footer-section-title d-md-none" data-bs-toggle="collapse" data-bs-target="#footer-insights" aria-expanded="false">
-                    Insights & Innovation
-                </button>
-                <h5 class="footer-section-title d-none d-md-block">Insights & Innovation</h5>
-                <ul class="footer-links collapse d-md-block" id="footer-insights">
-                    <li><a href="#">Insights</a></li>
-                    <li><a href="#">Events</a></li>
-                    <li><a href="#">Innovation</a></li>
-                </ul>
-                </div>
-
-                <!-- Legal -->
-                <div class="col-md-3 mb-3">
-                <button class="footer-section-title d-md-none" data-bs-toggle="collapse" data-bs-target="#footer-legal" aria-expanded="false">
-                    Legal
-                </button>
-                <h5 class="footer-section-title d-none d-md-block">Legal</h5>
-                <ul class="footer-links collapse d-md-block" id="footer-legal">
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-                </div>
-
-            </div>
-            </div>
-
-        </div>
-
-        <!-- Awards -->
-        <div class="row mt-4 d-flex justify-content-center gap-3">
-            <img src="{% static 'badge1.png' %}" width="70" class="mx-2" alt="Badge">
-            <img src="{% static 'badge2.png' %}" width="70" class="mx-2" alt="Badge">
-            <img src="{% static 'badge3.png' %}" width="70" class="mx-2" alt="Badge">
-        </div>
-
-        <!-- Footer Bottom -->
-        <div class="footer-bottom mt-4">
-            © 2025 O.H Shokubi & Co | The full-service law firm with sector expertise. All rights reserved.
-        </div>
-        </div>
-    </footer>
-
-<!-- ===========================
-        Bootstrap JS
-=========================== -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- ===========================
         Internal Styles
@@ -325,180 +219,10 @@
       display: none;
     }
   }
-  /* Footer */
-    .footer {
-    background-color: #1c1c1c;
-    color: #fff;
-    padding: 60px 20px 30px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    }
-
-    .footer .logo-text {
-    font-size: 0.95rem;
-    max-width: 300px;
-    margin-bottom: 20px;
-    }
-
-    .footer-section-title {
-    font-weight: bold;
-    margin-bottom: 15px;
-    cursor: pointer;
-    color: #fff;
-    background: none;
-    border: none;
-    width: 100%;
-    text-align: left;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #444;
-    position: relative;
-    }
-
-    .footer-section-title::after {
-    content: "\f078";
-    font-family: "Font Awesome 6 Free";
-    font-weight: 900;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.9rem;
-    transition: transform 0.3s ease;
-    }
-
-    .footer-section-title[aria-expanded="true"]::after {
-    transform: translateY(-50%) rotate(180deg);
-    }
-
-    .footer-links {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
-    }
-
-    .footer-links li {
-    margin-bottom: 8px;
-    }
-
-    .footer-links a {
-    color: #818080;
-    text-decoration: none;
-    }
-
-    .footer-links a:hover {
-    color: #e20000;
-    }
-
-    .footer-subscribe {
-    color: #ffcccb;
-    text-decoration: underline;
-    font-weight: bold;
-    }
-
-    .footer-bottom {
-    margin-top: 30px;
-    font-size: 0.85rem;
-    border-top: 1px solid #444;
-    padding-top: 15px;
-    text-align: center;
-    }
-
-    /* Footer Social Icons */
-    .footer-socials i {
-    font-size: 18px;
-    }
-
-    /* Responsive Footer */
-    @media (max-width: 768px) {
-    .footer-columns {
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .footer .footer-section-title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 1rem;
-    }
-
-    .footer-links.collapse:not(.show) {
-        display: none;
-    }
-
-    .footer-links.collapse.show {
-        display: block;
-        margin-top: 10px;
-    }
-    }
-    /* Animations */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeUp 1s ease-out forwards;
-}
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.zoom-in {
-  opacity: 0;
-  transform: scale(0.95);
-  animation: zoomIn 0.8s ease-out forwards;
-}
-@keyframes zoomIn {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-.fade-in-left {
-  opacity: 0;
-  transform: translateX(-30px);
-  animation: fadeLeft 1s forwards;
-}
-.fade-in-right {
-  opacity: 0;
-  transform: translateX(30px);
-  animation: fadeRight 1s forwards;
-}
-@keyframes fadeLeft {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@keyframes fadeRight {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .fade-in-left,
-  .fade-in-right {
-    animation-delay: 0.3s;
-    animation-timing-function: ease-out;
-  }
-}
-
-/* Image zoom on hover */
-.img-zoom-hover {
-  transition: transform 0.4s ease;
-}
-.img-zoom-hover:hover {
-  transform: scale(1.05);
-}
-
-/* Button hover effect */
-.btn:hover {
-  transform: scale(1.03);
-  transition: transform 0.3s ease;
-}
 
 </style>
 
 </body>
 </html>
+
+{% endblock content %}

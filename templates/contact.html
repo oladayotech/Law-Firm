@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us | O.H Shokubi & Co.</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fdf8ee;
+            color: #1c1c1c;
+        }
+
+        .contact-hero {
+            position: relative;
+            background-image: url("{% static 'images/Lagos-Nigeria-Photography-HD-Desktop-Wallpaper-123598.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            padding: 100px 20px;
+            color: #fff;
+            text-align: center;
+            }
+
+            .contact-hero .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+            }
+
+            .contact-hero .container {
+            position: relative;
+            z-index: 1;
+}
+
+        .contact-hero h1 {
+            font-size: 2.8rem;
+            font-weight: bold;
+        }
+
+        .office-section {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .office-photo {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .office-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #1c1c1c;
+            margin-bottom: 10px;
+        }
+
+        .office-info p {
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .office-info a {
+            color: #e20000;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .office-info a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-extras {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-top: 40px;
+            border-top: 1px solid #ddd;
+            padding-top: 30px;
+        }
+
+        .contact-extras .box {
+            flex: 1 1 100px;
+            border-left: 3px solid #e20000;
+            padding-left: 15px;
+        }
+
+        .contact-extras .box h3 {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1c1c1c;
+            margin-bottom: 8px;
+        }
+
+        .contact-extras .box a {
+            color: #e20000;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-extras .box a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            .contact-extras {
+                flex-direction: column;
+            }
+        }
+        .contact-section {
+            background-color: #fdf8ee;
+            position: relative;
+            padding: 80px 20px;
+            overflow: hidden;
+            }
+
+            #contact-form {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            }
+
+            #contact-form .form-control {
+            border-radius: 10px;
+            }
+
+            #contact-form .form-label {
+                text-align: left;
+                display: block;
+            }
+
+            #contact-form button {
+            margin-top: 10px;
+            }
+
+            /* Mobile Fixes */
+            @media (max-width: 768px) {
+            .contact-section .row {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #contact-form {
+                margin-top: 30px;
+            }
+
+            #contact-form .form-label {
+                text-align: left;
+            }
+            }
+            .text-danger{
+                color: #e20000 !important;
+            }
+    </style>
+</head>
+
+<body>
+        
+<!-- Hero Section -->
+<section class="contact-hero">
+  <div class="overlay"></div>
+  <div class="container position-relative z-1">
+    <h1>Contact Us</h1>
+    <p class="mt-3">Let’s partner with you to deliver exceptional legal services.</p>
+  </div>
+</section>
+
+<!-- Main Contact Section -->
+<div class="container py-5">
+    
+    <!-- Office Block -->
+    <div class="office-section">
+        <img src="{% static 'images/Lagos-Nigeria-Photography-HD-Desktop-Wallpaper-123598.jpg' %}" alt="Port Harcourt Office" class="office-photo">
+
+        <div class="office-title">Lagos</div>
+        
+        <div class="office-info">
+            <p>28 lagos street, Ikeja, Lagos, Nigeria</p>
+            <p><strong>Phone:</strong> +234 816 558 4491</p>
+            <p><strong>Email:</strong> <a href="mailto:info@ohshokubi.com">info@ohshokubi.com</a></p>
+        </div>
+    </div>
+
+    <!-- Extra Contacts -->
+    <div class="contact-extras">
+        <div class="box">
+            <h3>Lawyer Recruitment</h3>
+            <a href="mailto:careers@ohshokubi.com">careers@ohshokubi.com →</a>
+        </div>
+
+        <div class="box">
+            <h3>Media Contacts</h3>
+            <a href="mailto:media@ohshokubi.com">media@ohshokubi.com →</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section" id="contact">
+  <div class="container position-relative z-1 fade-up">
+    <div class="row justify-content-between align-items-center">
+
+      <!-- LEFT TEXT BLOCK -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h2 class="fw-bold mb-3">Let's hear more about your business needs</h2>
+        <p class="text-secondary mb-4">
+          Locate a O.H Shokubi & Co. office, find a lawyer, or leave us a message.
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#contact-form" class="btn btn-dark px-4 py-2 rounded-pill">Contact Us</a>
+          <a href="#" class="btn btn-outline-dark px-4 py-2 rounded-pill border-2 border-bottom border-danger">Find a Lawyer</a>
+        </div>
+      </div>
+
+      <!-- RIGHT CONTACT FORM -->
+      <div class="col-lg-5">
+        <form id="contact-form" class="bg-white p-4 rounded-4 shadow-sm">
+          <div class="mb-3 text-start">
+            <label for="name" class="form-label fw-semibold">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Your full name" required>
+          </div>
+          <div class="mb-3 text-start">
+            <label for="email" class="form-label fw-semibold">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+          </div>
+          <div class="mb-3 text-start">
+            <label for="message" class="form-label fw-semibold">Message</label>
+            <textarea class="form-control" id="message" rows="4" placeholder="Tell us about your needs..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-dark rounded-pill">Send Message</button>
+        </form>
+      </div>
+
+    </div>
+  </div> <!-- close container -->
+
+  <!-- Bottom Red Curve Background -->
+</section>
+
+</body>
+</html>
+{% endblock %}

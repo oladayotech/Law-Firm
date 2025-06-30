@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Practices | O.H Shokubi Law</title>
+    </head>
+    <body>
+
+        <style>
+            .card-body a{
+                color: black;
+                text-decoration: none;
+            }
+            .card-body a:hover{
+                color: #e20000;
+                text-decoration: underline;
+            }
+        </style>
+
+        <section class="practice-areas py-5" style="background-color: #fdf8ee;">
+  <div class="container">
+    <h2 class="fw-bold display-5 mb-3">Our Practice Areas</h2>
+    <p class="text-muted mb-5" style="max-width: 800px;">
+      Our firm provides trusted legal services in key areas that touch lives and shape futures. We combine deep expertise with unwavering integrity, helping individuals and families resolve complex legal issues with clarity and care.
+    </p>
+
+    <div class="row gy-4">
+
+        
+        {% for practice in practice_area %}
+            <div class="col-md-6 col-lg-3">
+            <div class="card border-0 shadow-sm h-100">
+            <img src="{{ practice.practice_image.url }}" class="card-img-top rounded-top" alt="Property Law">
+            <div class="card-body">
+                <h5 class="fw-bold"><a href="/practices/{{ practice.practice_name_for_url }}">{{ practice.practice_name }}</a></h5>
+                <p class="text-muted small">
+                {{ practice.practice_info }}
+                </p>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+            
+
+      <!-- Property Law -->
+      <!-- <div class="col-md-6 col-lg-3"> -->
+        <!-- <div class="card border-0 shadow-sm h-100">
+          <img src="{% static 'images/property-law.jpeg' %}" class="card-img-top rounded-top" alt="Property Law">
+          <div class="card-body">
+            <h5 class="fw-bold"><a href="/">Property Law</a></h5>
+            <p class="text-muted small">
+              From acquisition to title perfection, we advise on all aspects of property transactions, helping you secure, protect, and maximize your real estate assets.
+            </p>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Probate -->
+      <!-- <div class="col-md-6 col-lg-3">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="{% static 'images/probate-law.jpeg' %}" class="card-img-top rounded-top" alt="Probate">
+          <div class="card-body">
+            <h5 class="fw-bold"><a href="/">Probate</a></h5>
+            <p class="text-muted small">
+              We guide clients through estate administration, wills, letters of administration, and legal formalities after the passing of a loved one.
+            </p>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Divorce -->
+      <!-- <div class="col-md-6 col-lg-3">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="{% static 'images/download (19).jpeg' %}" class="card-img-top rounded-top" alt="Divorce">
+          <div class="card-body">
+            <h5 class="fw-bold"><a href="/">Divorce</a></h5>
+            <p class="text-muted small">
+              With sensitivity and professionalism, we help clients navigate separation, child custody, alimony, and family disputes with clarity and compassion.
+            </p>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- Civil Litigation -->
+      <!-- <div class="col-md-6 col-lg-3">
+        <div class="card border-0 shadow-sm h-100">
+          <img src="{% static 'images/civil-litigation.jpeg' %}" class="card-img-top rounded-top" alt="Civil Litigation">
+          <div class="card-body">
+            <h5 class="fw-bold"><a href="/">Civil Litigation</a></h5>
+            <p class="text-muted small">
+              We represent clients in a wide range of civil disputes — from contract breaches to enforcement — with a strategic, results-driven approach.
+            </p>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+    </body>
+    </html>
+{% endblock content %}
+    

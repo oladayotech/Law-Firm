@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | O.H Shokubi & Co.</title>
+</head>
+<body class="body" data-bs-spy="scroll" data-bs-target="#aboutNav" data-bs-offset="120" tabindex="0">
+
+<!-- About Hero -->
+<section class="about-hero text-center text-white d-flex flex-column justify-content-center">
+  <div class="container">
+    <h1 class="display-4 fw-bold mb-3">Dynamic. Pan-African. Full-Service Law Firm.</h1>
+    <p class="lead">Delivering exceptional legal services with integrity, innovation, and an unwavering commitment to Africa’s business future.</p>
+  </div>
+</section>
+
+<!-- About Main Content -->
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- Desktop Sidebar Scrollspy -->
+    <nav id="aboutNav" class="col-md-3 d-none d-md-block p-0">
+      <div class="position-sticky" style="top: 120px;">
+        <ul class="nav flex-column nav-pills ps-4 gap-3 pt-4 border-end" role="tablist">
+          <li class="nav-item"><a class="nav-link active" href="#who-we-are">Who We Are</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ohs-way">The OHS Way</a></li>
+          <li class="nav-item"><a class="nav-link" href="#brand-values">Brand Values</a></li>
+          <li class="nav-item"><a class="nav-link" href="#code-ethics">Code of Ethics</a></li>
+          <li class="nav-item"><a class="nav-link" href="#featured-insights">Featured Insights</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mobile Scrollspy Nav -->
+    <nav id="aboutNavMobile" class="navbar navbar-light bg-white sticky-top d-md-none border-bottom">
+      <div class="container-fluid px-3">
+        <ul class="nav nav-pills flex-nowrap overflow-auto gap-3 py-2" role="tablist" style="white-space: nowrap;">
+          <li class="nav-item"><a class="nav-link active" href="#who-we-are">Who We Are</a></li>
+          <li class="nav-item"><a class="nav-link" href="#ohs-way">OHS Way</a></li>
+          <li class="nav-item"><a class="nav-link" href="#brand-values">Values</a></li>
+          <li class="nav-item"><a class="nav-link" href="#code-ethics">Ethics</a></li>
+          <li class="nav-item"><a class="nav-link" href="#featured-insights">Insights</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Content Area -->
+    <main class="col-md-9 px-4 py-5 about-content" data-bs-spy="scroll" data-bs-target="#aboutNavMobile" data-bs-offset="120" tabindex="0">
+
+      <section id="who-we-are" class="mb-5">
+        <h2 class="section-title mb-4">Who We Are</h2>
+        <p class="lead">O.H Shokubi & Co. is a proudly Nigerian, Pan-African law firm offering strategic legal counsel and innovative solutions across industries and borders.</p>
+        <p class="text-muted">With a dynamic team of legal professionals, we blend global insight with deep local expertise, positioning us as trusted advisors for clients navigating Africa’s business landscape.</p>
+      </section>
+
+      <section id="ohs-way" class="mb-5">
+        <h2 class="section-title mb-4">The OHS Way</h2>
+        <p class="text-muted">Our approach is client-centric: building relationships grounded in trust and delivering consistent, measurable outcomes. We value agility, collaboration, and transparency—hallmarks of the OHS experience.</p>
+      </section>
+
+      <section id="brand-values" class="mb-5">
+        <h2 class="section-title mb-4">Brand Values</h2>
+        <ul class="list-unstyled ps-3">
+          <li>✔️ Excellence in legal service delivery</li>
+          <li>✔️ Integrity and accountability</li>
+          <li>✔️ Innovation and forward-thinking</li>
+          <li>✔️ Commitment to Africa’s legal and business environment</li>
+          <li>✔️ Diversity, inclusiveness, and respect</li>
+        </ul>
+      </section>
+
+      <section id="code-ethics" class="mb-5">
+        <h2 class="section-title mb-4">Code of Ethics</h2>
+        <p class="text-muted">Our practice is built on principles of fairness, confidentiality, respect, and professionalism. We uphold these values in every client relationship, court appearance, and advisory engagement.</p>
+      </section>
+
+      <section id="featured-insights" class="mb-5">
+        <h2 class="section-title mb-4">Featured Insights</h2>
+        <p class="text-muted">Explore our latest legal thought leadership, industry insights, and commentary on key developments shaping the African legal landscape.</p>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- Styling -->
+<style>
+.body {
+  background-color: #fdf8ee;
+}
+.about-hero {
+  background-color: #1c1c1c;
+  color: #fff;
+  padding: 100px 20px;
+  min-height: 300px;
+}
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1c1c1c;
+  border-bottom: 3px solid #e20000;
+  padding-bottom: 10px;
+}
+.about-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+/* Desktop Scrollspy Sidebar */
+#aboutNav .nav-link {
+  border-left: 3px solid transparent;
+  padding-left: 15px;
+  font-weight: 500;
+  color: #1c1c1c;
+  background-color: transparent !important;
+}
+#aboutNav .nav-link.active {
+  border-left: 3px solid #e20000;
+  color: #e20000 !important;
+}
+
+/* Mobile Scrollspy Styles */
+#aboutNavMobile .nav-link {
+  border-bottom: 3px solid transparent;
+  color: #1c1c1c;
+  font-weight: 500;
+  white-space: nowrap;
+}
+#aboutNavMobile .nav-link.active {
+  border-bottom: 3px solid #e20000;
+  color: #e20000 !important;
+  background-color: #fdf8ee;
+}
+.text-danger{
+  color: #e20000 !important;
+  }
+</style>
+
+<!-- Bootstrap ScrollSpy JS setup -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const scrollSpyMobile = new bootstrap.ScrollSpy(document.body, {
+      target: window.innerWidth < 768 ? '#aboutNavMobile' : '#aboutNav',
+      offset: 120
+    });
+  });
+</script>
+
+</body>
+</html>
+
+{% endblock %}

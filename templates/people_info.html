@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ lawyer.name }} | O.H Shokubi & Co.</title>
+
+  <!-- SEO -->
+  <meta name="description" content="{{ lawyer.name }} - {{ lawyer.title }} at O.H Shokubi & Co. Read profile, education, and expertise.">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf8ee;
+      color: #1c1c1c;
+    }
+
+    /* Hero Section */
+    .people-hero {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #1c1c1c;
+      color: #fff;
+      padding: 60px 20px;
+      align-items: center;
+    }
+    .people-hero .photo {
+      flex: 1 1 400px;
+      min-height: 400px;
+      background-color: #ccc;
+      background-size: cover;
+      background-position: center;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .people-hero .info {
+      flex: 1 1 500px;
+      padding: 20px;
+    }
+    .people-hero .name {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .people-hero .title {
+      font-size: 1.2rem;
+      color: #e1b57e;
+    }
+
+    /* Section Headings */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #1c1c1c;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      border-bottom: 3px solid #e20000;
+      padding-bottom: 10px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .people-hero {
+        flex-direction: column;
+      }
+      .people-hero .photo {
+        width: 100%;
+        height: 400px;
+        min-height: unset;
+      }
+    }
+
+    /* Desktop Scrollspy Sidebar */
+#aboutNav .nav-link {
+  border-left: 3px solid transparent;
+  padding-left: 15px;
+  font-weight: 500;
+  color: #1c1c1c;
+  background-color: transparent !important;
+}
+#aboutNav .nav-link.active {
+  border-left: 3px solid #e20000;
+  color: #e20000 !important;
+}
+
+/* Mobile Scrollspy Styles */
+#aboutNavMobile .nav-link {
+  border-bottom: 3px solid transparent;
+  color: #1c1c1c;
+  font-weight: 500;
+  white-space: nowrap;
+}
+#aboutNavMobile .nav-link.active {
+  border-bottom: 3px solid #e20000;
+  color: #e20000 !important;
+  background-color: #fdf8ee;
+}
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#sidebarMenu" data-bs-offset="100" tabindex="0">
+
+<!-- Hero Section -->
+<section class="people-hero">
+  <!-- Lawyer Photo -->
+  <div class="photo" style="background-image: url('{{ lawyer.photo.url }}');"></div>
+
+  <!-- Lawyer Info -->
+  <div class="info">
+    <div class="name">{{ lawyer.name }}</div>
+    <div class="title">{{ lawyer.title }}</div>
+  </div>
+</section>
+
+<!-- About Main Content -->
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- Desktop Sidebar Scrollspy -->
+    <nav id="aboutNav" class="col-md-3 d-none d-md-block p-0">
+      <div class="position-sticky" style="top: 120px;">
+        <ul class="nav flex-column nav-pills ps-4 gap-3 pt-4 border-end" role="tablist">
+          <li class="nav-item"><a class="nav-link active" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#specialization">Specialization</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="#featured-insights">Featured Insights</a></li> -->
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mobile Scrollspy Nav -->
+    <nav id="aboutNavMobile" class="navbar navbar-light bg-white sticky-top d-md-none border-bottom">
+      <div class="container-fluid px-3">
+        <ul class="nav nav-pills flex-nowrap overflow-auto gap-3 py-2" role="tablist" style="white-space: nowrap;">
+          <li class="nav-item"><a class="nav-link active" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#specialization">Specialization</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <!-- <li class="nav-item"><a class="nav-link" href="#featured-insights">Insights</a></li> -->
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Content Area -->
+    <main class="col-md-9 px-4 py-5 about-content" data-bs-spy="scroll" data-bs-target="#aboutNavMobile" data-bs-offset="120" tabindex="0">
+
+      <section id="about" class="mb-5">
+        <h2 class="section-title mb-4">About {{ lawyer.name }}</h2>
+        {% if lawyer.bio %}
+            <p class="lead"></p>
+            <p class="text-muted">{{ lawyer.bio }}</p>
+        {% else %}
+            <p class="lead"></p>
+            <p class="text-muted">{{ lawyer.name }} is a highly skilled {{ lawyer.title }} at O.H Shokubi & Co., with deep expertise in {{ lawyer.specialization }}.</p>
+        {% endif %}
+      </section>
+
+      <section id="specialization" class="mb-5">
+        <h2 class="section-title mb-4">Specialization</h2>
+        <p class="text-muted">{{ lawyer.practice_area|default:"Various areas of law and corporate practice." }}</p>
+        <!-- {% for i in "1234567890"|make_list %}
+        <p class="text-muted">{{ lawyer.specialization|default:"Various areas of law and corporate practice." }}</p>
+        {% endfor %} -->
+      </section>
+
+      <!-- <section id="brand-values" class="mb-5">
+        <ul class="list-unstyled ps-3">
+          <li>✔️ Excellence in legal service delivery</li>
+          <li>✔️ Integrity and accountability</li>
+          <li>✔️ Innovation and forward-thinking</li>
+          <li>✔️ Commitment to Africa’s legal and business environment</li>
+          <li>✔️ Diversity, inclusiveness, and respect</li>
+        </ul>
+      </section> -->
+
+      <section id="education" class="mb-5">
+        <h2 class="section-title mb-4">Education</h2>
+        <p class="text-muted">{{ lawyer.education|default:"Information coming soon." }}</p>
+      </section>
+
+      <section id="contact" class="mb-5">
+        <h2 class="section-title mb-4">Contact</h2>
+        <p class="text-muted">Our practice is built on principles of fairness, confidentiality, respect, and professionalism. We uphold these values in every client relationship, court appearance, and advisory engagement.</p>
+        <p class="text-muted">
+          {% if lawyer.email %}
+            <i class="fa fa-envelope"></i> <a href="mailto:{{ lawyer.email }}">{{ lawyer.email }}</a><br>
+          {% endif %}
+          {% if lawyer.linkedin %}
+            <i class="fab fa-linkedin"></i> <a href="{{ lawyer.linkedin }}" target="_blank">LinkedIn Profile</a>
+          {% endif %}
+        </p>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const scrollSpyMobile = new bootstrap.ScrollSpy(document.body, {
+      target: window.innerWidth < 768 ? '#aboutNavMobile' : '#aboutNav',
+      offset: 120
+    });
+  });
+</script>
+
+</body>
+</html>
+
+{% endblock content %}

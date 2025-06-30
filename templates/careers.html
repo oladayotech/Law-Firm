@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Careers | O.H Shokubi & Co.</title>
+  <style>
+    .careers-hero {
+      background-color: #1c1c1c;
+      color: #fff;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .careers-message {
+      background-color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .careers-message h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #1c1c1c;
+    }
+
+    .careers-message p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .text-danger{
+        color: #e20000 !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="careers-hero">
+  <div class="container">
+    <h1 class="fw-bold">Careers at O.H Shokubi & Co.</h1>
+    <p class="lead">Passionate. Precise. Purpose-driven.</p>
+  </div>
+</section>
+
+<!-- Message -->
+<section class="careers-message">
+  <div class="container">
+    <h2>We're not currently hiring</h2>
+    <p>
+      While we’re not actively recruiting at the moment, we welcome you to check back in the future or follow our updates for potential openings.
+    </p>
+  </div>
+</section>
+
+</body>
+</html>
+{% endblock %}
