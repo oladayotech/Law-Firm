@@ -145,9 +145,9 @@ LOGIN_URL = 'login'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # STATIC_URL = '/static/'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")  # below SecurityMiddleware
+# MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")  # below SecurityMiddleware
 
 # Database (Render uses PostgreSQL)
 # DATABASES = {
