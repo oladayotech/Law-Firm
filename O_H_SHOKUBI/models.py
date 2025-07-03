@@ -1,6 +1,14 @@
 from django.db import models
 from django.utils.text import slugify
 
+from django.db import models
+from cloudinary_storage.storage import MediaCloudinaryStorage
+
+class CloudinaryImageField(models.ImageField):
+    def __init__(self, *args, **kwargs):
+        kwargs['storage'] = MediaCloudinaryStorage()
+        super().__init__(*args, **kwargs)
+
 
 # Create your models here.
 class News(models.Model):
@@ -8,7 +16,7 @@ class News(models.Model):
 
     headline = models.CharField(max_length=255)
     headline_for_url = models.SlugField(max_length=255, blank=True)
-    news_images = models.ImageField(upload_to='news/', null=True, blank=True)
+    news_images = CloudinaryImageField(upload_to='news/', null=True, blank=True)
     news_body = models.TextField(blank=True)
     created_time_date = models.DateTimeField(auto_now_add=True)
 
@@ -25,7 +33,7 @@ class Lawyer(models.Model):
     name = models.CharField(max_length=200)
     name_for_url = models.SlugField(max_length=200, blank=True)
     title = models.CharField(max_length=100)  # e.g. 'Managing Partner', 'Senior Associate'
-    photo = models.ImageField(upload_to='lawyers/', blank=True, null=True)
+    photo = CloudinaryImageField(upload_to='lawyers/', blank=True, null=True)
     bio = models.TextField(blank=True)
     education = models.TextField(blank=True)
     practice_area = models.CharField(max_length=200, blank=True)
@@ -41,13 +49,14 @@ class Lawyer(models.Model):
         if not self.name_for_url:
             self.name_for_url = slugify(self.name)
         super().save(*args, **kwargs)
-
+        
+from cloudinary_storage.storage import MediaCloudinaryStorage
 
 class Practice(models.Model):
     practice_name = models.CharField(max_length=200)
     practice_name_for_url = models.SlugField(max_length=200, blank=True)
     practice_info = models.TextField(blank=True)
-    practice_image = models.ImageField(blank=True, upload_to='practice/')
+    practice_image = models.ImageField(blank=True, upload_to='practice/', storage=MediaCloudinaryStorage())
     practice_expertise_raw = models.TextField(
         blank=True,
         help_text="Separate each item with a new line"
@@ -65,6 +74,8 @@ class Practice(models.Model):
         return self.practice_name
 
     def save(self, *args, **kwargs):
+        print(">>> Saving Practice")
+        print(">>> File storage:", self.practice_image.storage)
         if not self.practice_name_for_url:
             self.practice_name_for_url = slugify(self.practice_name)
         super().save(*args, **kwargs)
