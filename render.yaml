@@ -2,3 +2,15 @@
 python manage.py migration --noinput
 python manage.py migrate --noinput
 gunicorn Law_firm.wsgi:application
+
+services:
+  - type: web
+    name: shokubilawfirm
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn Law_firm.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: Law_firm.settings
+    migrationsCommand: |
+      python manage.py migrate --noinput
