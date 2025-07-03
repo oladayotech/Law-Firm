@@ -1,0 +1,3 @@
+#!/bin/bash
+python manage.py migrate --noinput
+gunicorn Law_firm.wsgi:application
