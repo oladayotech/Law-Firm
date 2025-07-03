@@ -1,15 +1,20 @@
 # create_superuser.py
 import os
 import django
-from django.contrib.auth import get_user_model
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Law_firm.settings")
 django.setup()
 
+from django.contrib.auth import get_user_model
+
 User = get_user_model()
 
-if not User.objects.filter(username="dayo").exists():
-    User.objects.create_superuser("dayo", "dayo@gmail.com", "1234")
-    print("✅ Superuser created!")
+username = "admin"
+email = "admin@example.com"
+password = "AdminPassword1234"
+
+if not User.objects.filter(username=username).exists():
+    User.objects.create_superuser(username=username, email=email, password=password)
+    print("✅ Superuser created.")
 else:
     print("⚠️ Superuser already exists.")
