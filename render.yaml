@@ -14,3 +14,4 @@ services:
         value: Law_firm.settings
     migrationsCommand: |
       python manage.py migrate --noinput
+      python create_superuser.py
