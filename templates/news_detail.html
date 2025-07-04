@@ -19,14 +19,20 @@
   <!-- Open Graph for social sharing -->
   <meta property="og:title" content="{{ news.headline }}">
   <meta property="og:description" content="{{ news.headline }} - Read more from O.H Shokubi & Co.">
-  <meta property="og:image" content="{{ news.news_images.url }}">
+  
+  {% if news.news_images %}
+    <meta property="og:image" content="{{ news.news_images.url }}">
+  {% endif %}
   <meta property="og:url" content="{{ request.build_absolute_uri }}">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ news.headline }}">
   <meta name="twitter:description" content="{{ news.headline }}">
-  <meta name="twitter:image" content="{{ news.news_images.url }}">
+  
+  {% if news.news_images %}
+    <meta name="twitter:image" content="{{ news.news_images.url }}">
+  {% endif %}
 </head>
 
 <body style="font-family: 'Segoe UI', sans-serif; background-color: #fdf8ee; color: #1c1c1c; margin: 0; padding: 0;">
