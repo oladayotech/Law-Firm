@@ -38,7 +38,7 @@
   
   <!-- Background Image (shows at top with dark overlay) -->
    
-   {% if news.news_images.url %}
+   {% if news.news_images %}
     <div class="news-hero-bg" style="background-image: url('{{ news.news_images.url }}');"></div>
    {% endif %}
   
@@ -68,7 +68,7 @@
     <!-- Main Image (again for full view if needed) -->
     <div class="news-image mb-5">
       
-      {% if  %}
+      {% if news.news_images %}
         <img src="{{ news.news_images.url }}" alt="News Image" class="img-fluid rounded-4 shadow img-zoom-hover">
       {% endif %}
     </div>
