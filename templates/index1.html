@@ -216,10 +216,10 @@
         <div class="col-md-4">
           <div class="card border-0 shadow-sm h-100">
             {% if news.news_images %}
-              <img src="{{ news.news_images.url }}" class="card-img-top img-zoom-hover" alt="TotalEnergies news">
+              <img src="{{ news.news_images.url }}" class="card-img-top img-zoom-hover" alt="{{ news.headline }}">
             {% endif %}
             <div class="card-body bg-light-subtle">
-              <small class="text-muted d-block mb-1">5 JUNE 2025</small>
+              <small class="text-muted d-block mb-1">{{ news.created_time_date|date:"jS F Y" }}</small>
               <h5 class="card-title fw-semibold" style="color: #1c1c1c;">
               {{ news.headline }}
               </h5>

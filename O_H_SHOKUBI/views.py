@@ -85,12 +85,12 @@ def practices_info(request, practice_name_for_url):
     practice_lawyers = practice_area.lawyers.all()
     return render(request, 'practices_info.html', {'practice_lawyers':practice_lawyers, 'practice_area':practice_area})
 
-from django.contrib.auth.models import User
-from django.http import JsonResponse
+# from django.contrib.auth.models import User
+# from django.http import JsonResponse
 
-def debug_users(request):
-    if not request.user.is_superuser:
-        return JsonResponse({"error": "forbidden"}, status=403)
+# def debug_users(request):
+#     if not request.user.is_superuser:
+#         return JsonResponse({"error": "forbidden"}, status=403)
 
-    users = list(User.objects.values("username", "email", "is_superuser", "is_staff"))
-    return JsonResponse(users, safe=False)
+#     users = list(User.objects.values("username", "email", "is_superuser", "is_staff"))
+#     return JsonResponse(users, safe=False)
