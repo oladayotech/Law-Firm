@@ -149,7 +149,10 @@
             <!-- Card 1 -->
             <div class="col-md-3">
             <div class="people-card">
+              
+              {% if people.photo %}
                 <img src="{{ people.photo.url }}" alt="{{ people.name }} image">
+              {% endif %}
                 <div class="people-card-body text-center">
                     <a href="people/{{ people.name_for_url }}"><h5>{{ people.name }}</h5></a>
                     <p>{{ people.title }}</p>
