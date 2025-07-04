@@ -37,7 +37,10 @@
 <section class="news-hero position-relative">
   
   <!-- Background Image (shows at top with dark overlay) -->
-  <div class="news-hero-bg" style="background-image: url('{{ news.news_images.url }}');"></div>
+   
+   {% if news.news_images.url %}
+    <div class="news-hero-bg" style="background-image: url('{{ news.news_images.url }}');"></div>
+   {% endif %}
   
   <!-- Hero Text Content -->
   <div class="container position-relative z-2 text-center py-5">
@@ -64,7 +67,10 @@
 
     <!-- Main Image (again for full view if needed) -->
     <div class="news-image mb-5">
-      <img src="{{ news.news_images.url }}" alt="News Image" class="img-fluid rounded-4 shadow img-zoom-hover">
+      
+      {% if  %}
+        <img src="{{ news.news_images.url }}" alt="News Image" class="img-fluid rounded-4 shadow img-zoom-hover">
+      {% endif %}
     </div>
 
     <!-- News Body Text -->

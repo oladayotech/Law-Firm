@@ -155,7 +155,10 @@
   {% for lawyer in practice_lawyers %}
     <div class="col-md-3">
             <div class="people-card">
+              
+              {% if lawyer.photo.url %}
                 <img src="{{ lawyer.photo.url }}" alt="Lawyer 1">
+              {% endif %}
                 <div class="people-card-body text-center">
                     <a href="/people/{{ lawyer.name_for_url }}"><h5>{{ lawyer.name }}</h5></a>
                     <p>{{ lawyer.title }}</p>
