@@ -70,8 +70,10 @@
 
     <!-- Social Icons -->
     <div class="news-social-icons d-none d-md-flex flex-column">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
+       target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}"
+       target="_blank"i class="fab fa-x-twitter"></i></a>
       <a href="#"><i class="fab fa-linkedin-in"></i></a>
     </div>
 

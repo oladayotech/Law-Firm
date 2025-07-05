@@ -12,9 +12,17 @@
 }
 </style>
 
-<form action="{% url 'news_search' %}" method="get" class="d-flex">
-    <input type="text" name="q" placeholder="Search news..." class="form-control me-2">
-    <button class="btn btn-outline-danger" type="submit">Search</button>
+<form action="{% url 'news_search' %}" method="get" class="search-bar w-100 d-flex flex-wrap gap-2 my-4">
+  <input 
+    type="text" 
+    name="q" 
+    class="form-control flex-grow-1 rounded-pill px-4 py-2 border border-danger shadow-sm" 
+    placeholder="Search legal news, insights..." 
+    required>
+    
+  <button type="submit" class="btn btn-danger px-4 py-2 rounded-pill fw-semibold">
+    Search
+  </button>
 </form>
 
 <section class="py-5 zoom-in" style="background-color: #fff;">
