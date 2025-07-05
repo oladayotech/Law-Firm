@@ -337,6 +337,11 @@
   </div>
 </nav>
 
+<form action="{% url 'news_search' %}" method="get" class="d-flex">
+    <input type="text" name="q" placeholder="Search news..." class="form-control me-2">
+    <button class="btn btn-outline-danger" type="submit">Search</button>
+</form>
+
 
     {% block content %}
         <!-- page content will go here -->

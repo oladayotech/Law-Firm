@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Search Results for "{{ query }}"</h2>
+  {% if results %}
+    {% for news in results %}
+      <div>
+        <a href="{{ news.get_absolute_url }}">{{ news.headline }}</a>
+        <p>{{ news.created_time_date }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No results found.</p>
+  {% endif %}
+{% endblock %}
