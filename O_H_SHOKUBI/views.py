@@ -62,26 +62,45 @@ def news_detail(request, headline_for_url):
 
 def people(request):
     lawyers = models.Lawyer.objects.all()
-    
+
+    # Distinct values for dropdowns
+    practice_groups = models.Lawyer.objects.values_list('practice_area', flat=True).distinct()
+    positions = models.Lawyer.objects.values_list('title', flat=True).distinct()
+
     paginator = Paginator(lawyers, 9)
-    
-    # Get current page number from URL
     page_number = request.GET.get('page')
-    
-    # Get page object
     page_obj = paginator.get_page(page_number)
-    return render(request, 'people.html', {'page_obj':page_obj})
+
+    return render(request, 'people.html', {
+        'page_obj': page_obj,
+        'practice_groups': practice_groups,
+        'positions': positions
+    })
 
 def people_search(request):
-    query = request.GET.get('q')
-    results = models.Lawyer.objects.filter(
-        Q(name__icontains=query) |
-        Q(title__icontains=query) |
-        Q(practice_area__icontains=query)
-    ) if query else []
+    query = request.GET.get('q', '')
+    practice = request.GET.get('practice', '')
+    position = request.GET.get('position', '')
+
+    results = models.Lawyer.objects.all()
+
+    if query:
+        results = results.filter(
+            Q(name__icontains=query) |
+            Q(title__icontains=query) |
+            Q(practice_area__icontains=query)
+        )
+
+    if practice:
+        results = results.filter(practice_area=practice)
+
+    if position:
+        results = results.filter(title=position)
 
     return render(request, 'people_search.html', {
         'query': query,
+        'practice': practice,
+        'position': position,
         'results': results
     })
 

@@ -2,6 +2,7 @@
 
 {% block content %}
 {% load static %}
+{% load highlight %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,21 +117,21 @@
 
       <div class="col-md-4">
         <label for="practiceGroup">Practice Group</label>
-        <select class="form-select" id="practiceGroup">
-          <option selected>All Practice Groups</option>
-          <option value="1">Banking</option>
-          <option value="2">Corporate</option>
-          <option value="3">Energy</option>
+        <select name="practice" class="form-select">
+            <option value="">All Practice Groups</option>
+            {% for group in results.values_list('practice_area', flat=True).distinct %}
+                <option value="{{ group }}" {% if group == practice %}selected{% endif %}>{{ group }}</option>
+            {% endfor %}
         </select>
       </div>
 
       <div class="col-md-3">
         <label for="position">Position</label>
-        <select class="form-select" id="position">
-          <option selected>All Positions</option>
-          <option value="1">Managing Partner</option>
-          <option value="2">Senior Partner</option>
-          <option value="3">Associate</option>
+        <select name="position" class="form-select">
+            <option value="">All Positions</option>
+            {% for pos in results.values_list('title', flat=True).distinct %}
+                <option value="{{ pos }}" {% if pos == position %}selected{% endif %}>{{ pos }}</option>
+            {% endfor %}
         </select>
       </div>
 
@@ -156,8 +157,10 @@
                 <img src="{{ people.photo.url }}" alt="{{ people.name }} image">
               {% endif %}
                 <div class="people-card-body text-center">
-                    <a href="people/{{ people.name_for_url }}"><h5>{{ people.name }}</h5></a>
-                    <p>{{ people.title }}</p>
+                    <a href="people/{{ people.name_for_url }}">
+                    <h5>{{ people.name|highlight:query }}</h5>
+                    </a>
+                    <p>{{ people.title|highlight:query }}</p>
                 </div>
                 </div>
             </div>
