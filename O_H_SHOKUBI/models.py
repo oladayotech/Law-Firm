@@ -29,6 +29,10 @@ class News(models.Model):
             self.headline_for_url = slugify(self.headline)
         super().save(*args, **kwargs)
         
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('news_detail', kwargs={'slug': self.headline_for_url})
+        
 class Lawyer(models.Model):
     name = models.CharField(max_length=200)
     name_for_url = models.SlugField(max_length=200, blank=True)
