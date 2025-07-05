@@ -2,7 +2,7 @@
 {% block content %}
 
 <style>
-    .card-body a :hover{
+    .card-link :hover{
         text-decoration: underline;
     }
 </style>
@@ -11,7 +11,7 @@
   <input 
     type="text" 
     name="q" 
-    class="form-control flex-grow-1 rounded-pill px-4 py-2 border border-danger shadow-sm" 
+    class="form-control flex-grow-1 rounded-pill px-4 py-2 border border-dark shadow-sm" 
     placeholder="Search legal news, insights..." 
     required>
     
@@ -34,7 +34,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ news.headline }}</h5>
               <p class="card-text">{{ news.news_body|truncatewords:20 }}</p>
-              <a href="{{ news.get_absolute_url }}" class="text-danger fw-semibold text-decoration-none">Read More &rarr;</a>
+              <a href="{{ news.get_absolute_url }}" class=" card-link text-danger fw-semibold text-decoration-none">Read More &rarr;</a>
             </div>
           </div>
         </div>
