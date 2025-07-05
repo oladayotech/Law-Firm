@@ -157,10 +157,8 @@
                 <img src="{{ people.photo.url }}" alt="{{ people.name }} image">
               {% endif %}
                 <div class="people-card-body text-center">
-                    <a href="people/{{ people.name_for_url }}">
-                    <h5>{{ people.name|highlight:query }}</h5>
-                    </a>
-                    <p>{{ people.title|highlight:query }}</p>
+                    <a href="people/{{ people.name_for_url }}"><h5>{{ people.name }}</h5></a>
+                    <p>{{ people.title }}</p>
                 </div>
                 </div>
             </div>
