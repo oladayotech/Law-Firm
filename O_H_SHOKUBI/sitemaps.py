@@ -9,4 +9,4 @@ class NewsSitemap(Sitemap):
         return News.objects.all()
 
     def lastmod(self, obj):
-        return obj.creted_time_date  # or obj.created if no updated
+        return obj.created_time_date  # or obj.created if no updated
