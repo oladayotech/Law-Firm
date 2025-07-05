@@ -28,9 +28,13 @@ def news(request):
 def news_search(request):
     query = request.GET.get('q')
     results = models.News.objects.filter(
-        Q(headline_icontains=query) | Q(news_body_icontains=query)
-        )if query else []
-    return render(request, 'news_search.html', {'query':query, 'results':results})
+        Q(headline__icontains=query) | Q(news_body__icontains=query)
+    ) if query else []
+
+    return render(request, 'news_search.html', {
+        'query': query,
+        'results': results
+    })
 
 def news_create(request):
     if request.user.is_authenticated and request.user.is_superuser:

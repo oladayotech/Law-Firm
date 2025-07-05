@@ -1,14 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h2>Search Results for "{{ query }}"</h2>
+
+<div class="container my-5">
+  <h2 class="mb-4">Search Results for “{{ query }}”</h2>
+
   {% if results %}
-    {% for news in results %}
-      <div>
-        <a href="{{ news.get_absolute_url }}">{{ news.headline }}</a>
-        <p>{{ news.created_time_date }}</p>
-      </div>
-    {% endfor %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      {% for news in results %}
+        <div class="col">
+          <div class="card h-100 border-0 shadow-sm">
+            {% if news.news_images %}
+              <img src="{{ news.news_images.url }}" class="card-img-top" alt="{{ news.headline }}">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title">{{ news.headline }}</h5>
+              <p class="card-text">{{ news.news_body|truncatewords:20 }}</p>
+              <a href="{{ news.get_absolute_url }}" class="btn btn-sm btn-outline-danger">Read More</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
   {% else %}
     <p>No results found.</p>
   {% endif %}
+</div>
+
 {% endblock %}

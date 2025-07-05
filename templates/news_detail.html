@@ -79,11 +79,11 @@
       {% endif %}
     </div>
 
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb bg-light px-3 py-2 rounded">
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item"><a href="/news">News</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ news.headline }}</li>
+    <nav aria-label="breadcrumb" class="my-4">
+      <ol class="breadcrumb bg-white px-3 py-2 rounded shadow-sm">
+        <li class="breadcrumb-item"><a href="/" class="text-decoration-none text-danger fw-semibold">Home</a></li>
+        <li class="breadcrumb-item"><a href="/news" class="text-decoration-none text-danger">News</a></li>
+        <li class="breadcrumb-item active text-dark" aria-current="page">{{ news.headline }}</li>
       </ol>
     </nav>
 
@@ -92,17 +92,30 @@
       <article>{{ news.news_body|safe }}</article>
     </div>
 
-    <div class="mt-4">
-    <h5>Share this article:</h5>
-    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" 
-      target="_blank" class="btn btn-primary me-2">
-      Share on Facebook
+    <div class="mt-5">
+  <h5 class="mb-3 fw-semibold">Share this article:</h5>
+  <div class="d-flex flex-wrap gap-2">
+
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}"
+       target="_blank"
+       class="btn btn-outline-primary rounded-pill px-4 d-flex align-items-center gap-2">
+      <i class="fab fa-facebook-f"></i> Facebook
     </a>
-    <a href="https://wa.me/?text={{ request.build_absolute_uri }}" 
-      target="_blank" class="btn btn-success">
-      Share on WhatsApp
+
+    <a href="https://wa.me/?text={{ request.build_absolute_uri }}"
+       target="_blank"
+       class="btn btn-outline-success rounded-pill px-4 d-flex align-items-center gap-2">
+      <i class="fab fa-whatsapp"></i> WhatsApp
     </a>
+
+    <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}"
+       target="_blank"
+       class="btn btn-outline-dark rounded-pill px-4 d-flex align-items-center gap-2">
+      <i class="fab fa-x-twitter"></i> X (Twitter)
+    </a>
+
   </div>
+</div>
 
 
 
