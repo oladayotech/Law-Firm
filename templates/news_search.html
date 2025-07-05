@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<style>
+    .card-body a :hover{
+        text-decoration: underline;
+    }
+</style>
+
 <form action="{% url 'news_search' %}" method="get" class="search-bar w-100 d-flex gap-2 my-4">
   <input 
     type="text" 
@@ -9,7 +15,7 @@
     placeholder="Search legal news, insights..." 
     required>
     
-  <button type="submit" class="btn btn-danger px-4 py-2 rounded-pill fw-semibold">
+  <button type="submit" class="btn btn-outline-dark px-4 py-2 rounded-pill fw-semibold">
     Search
   </button>
 </form>
@@ -28,7 +34,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ news.headline }}</h5>
               <p class="card-text">{{ news.news_body|truncatewords:20 }}</p>
-              <a href="{{ news.get_absolute_url }}" class="text-danger fw-semibold text-decoration-none">Read More</a>
+              <a href="{{ news.get_absolute_url }}" class="text-danger fw-semibold text-decoration-none">Read More &rarr;</a>
             </div>
           </div>
         </div>
