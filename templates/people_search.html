@@ -144,8 +144,8 @@
   <!-- People Cards Grid -->
   <section class="container pb-5">
     <div class="row g-4 mt-3">
-      {% if page_obj %}
-        {% for people in page_obj %}
+      {% if results %}
+        {% for people in result %}
             <!-- Card 1 -->
             <div class="col-md-3">
             <div class="people-card">
@@ -160,9 +160,12 @@
                 </div>
             </div>
         {% endfor %}
+
+      {% else %}
+         <p>No results found.</p>
       {% endif %}
 
-      <nav aria-label="Page navigation example">
+      <!-- <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center mt-4 gap-2">
 
             {% if page_obj.has_previous %}
@@ -198,7 +201,7 @@
             {% endif %}
 
         </ul>
-        </nav>
+        </nav> -->
     </div>
   </section>
 {% endblock content %}
