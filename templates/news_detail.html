@@ -11,14 +11,14 @@
   <title>{{ news.headline }} | O.H Shokubi & Co.</title>
   
   <!-- Dynamic SEO description -->
-  <meta name="description" content="{{ news.headline }} - Read the latest legal insights and updates from O.H Shokubi & Co.">
+  <meta name="description" content="{{ news.news_body|truncatechars:160 }}">
   
   <!-- Keywords (optional) -->
   <meta name="keywords" content="Law Firm, Nigeria, Arbitration, Lagos, IP Law, {{ news.headline }}, law, legal, divorce">
 
   <!-- Open Graph for social sharing -->
   <meta property="og:title" content="{{ news.headline }}">
-  <meta property="og:description" content="{{ news.headline }} - Read more from O.H Shokubi & Co.">
+  <meta property="og:description" content="{{ news.news_body|truncatechars:160 }}">
   
   {% if news.news_images %}
     <meta property="og:image" content="{{ news.news_images.url }}">
@@ -79,10 +79,32 @@
       {% endif %}
     </div>
 
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-light px-3 py-2 rounded">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/news">News</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ news.headline }}</li>
+      </ol>
+    </nav>
+
     <!-- News Body Text -->
     <div class="news-body">
       <article>{{ news.news_body|safe }}</article>
     </div>
+
+    <div class="mt-4">
+    <h5>Share this article:</h5>
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" 
+      target="_blank" class="btn btn-primary me-2">
+      Share on Facebook
+    </a>
+    <a href="https://wa.me/?text={{ request.build_absolute_uri }}" 
+      target="_blank" class="btn btn-success">
+      Share on WhatsApp
+    </a>
+  </div>
+
+
 
     {% if request.user.is_authenticated %}
     <div class="text-center mt-5">

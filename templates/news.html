@@ -12,6 +12,11 @@
 }
 </style>
 
+<form action="{% url 'news_search' %}" method="get" class="d-flex">
+    <input type="text" name="q" placeholder="Search news..." class="form-control me-2">
+    <button class="btn btn-outline-danger" type="submit">Search</button>
+</form>
+
 <section class="py-5 zoom-in" style="background-color: #fff;">
   <div class="container">
     <h2 class="fw-bold mb-4" style="color: #1c1c1c;">Latest News</h2>
