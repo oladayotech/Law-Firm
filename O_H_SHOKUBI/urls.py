@@ -16,5 +16,6 @@ urlpatterns = [
     path('news/edit/<slug:headline_for_url>', views.news_edit, name='news_edit'),
     path('news/<slug:headline_for_url>', views.news_detail, name='news_detail'),
     path('people', views.people, name='people'),
+    path('people/search', views.people_search, name='people_search'),
     path('people/<slug:name_for_url>', views.people_info, name='people')
 ]
