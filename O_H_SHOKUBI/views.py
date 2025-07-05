@@ -75,11 +75,14 @@ def people(request):
 def people_search(request):
     query = request.GET.get('q')
     results = models.Lawyer.objects.filter(
-        Q(name__icontains=query) | Q(title__icontains=query) | Q(practices_area__icontains=query)
+        Q(name__icontains=query) |
+        Q(title__icontains=query) |
+        Q(practice_area__icontains=query)
     ) if query else []
+
     return render(request, 'people_search.html', {
-        'query':query,
-        'results':results
+        'query': query,
+        'results': results
     })
 
 def people_info(request, name_for_url):

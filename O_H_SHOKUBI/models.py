@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils.text import slugify
+from django.urls import reverse
 
 from django.db import models
+
 from cloudinary_storage.storage import MediaCloudinaryStorage
 
 class CloudinaryImageField(models.ImageField):
@@ -30,7 +32,6 @@ class News(models.Model):
         super().save(*args, **kwargs)
         
     def get_absolute_url(self):
-        from django.urls import reverse
         return reverse('news_detail', kwargs={'headline_for_url': self.headline_for_url})
         
 class Lawyer(models.Model):
@@ -54,7 +55,8 @@ class Lawyer(models.Model):
             self.name_for_url = slugify(self.name)
         super().save(*args, **kwargs)
         
-from cloudinary_storage.storage import MediaCloudinaryStorage
+    def get_absolute_url(self):
+        return reverse('people_info.html', kwargs={'name_for_url': self.name_for_url})
 
 class Practice(models.Model):
     practice_name = models.CharField(max_length=200)

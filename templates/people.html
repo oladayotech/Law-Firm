@@ -107,7 +107,7 @@
   <!-- Search Block -->
   <section class="container people-search-block">
     <h2>Find a Lawyer</h2>
-    <form class="row g-3 align-items-end">
+    <form action="{% url 'people_search' %}" method="get" class="row g-3 align-items-end">
 
       <div class="col-md-4">
         <label for="searchName">Search by name</label>
