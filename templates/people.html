@@ -116,21 +116,21 @@
 
       <div class="col-md-4">
         <label for="practiceGroup">Practice Group</label>
-        <select class="form-select" id="practiceGroup" name="practice">
-          <option value="">All Practice Groups</option>
-          {% for group in practice_groups %}
-            <option value="{{ group }}">{{ group }}</option>
-          {% endfor %}
+        <select class="form-select" id="practiceGroup">
+          <option selected>All Practice Groups</option>
+          <option value="1">Banking</option>
+          <option value="2">Corporate</option>
+          <option value="3">Energy</option>
         </select>
       </div>
 
       <div class="col-md-3">
         <label for="position">Position</label>
-        <select class="form-select" id="position" name="position">
-          <option value="">All Positions</option>
-          {% for pos in positions %}
-            <option value="{{ pos }}">{{ pos }}</option>
-          {% endfor %}
+        <select class="form-select" id="position">
+          <option selected>All Positions</option>
+          <option value="1">Managing Partner</option>
+          <option value="2">Senior Partner</option>
+          <option value="3">Associate</option>
         </select>
       </div>
 
