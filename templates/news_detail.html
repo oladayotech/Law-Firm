@@ -14,7 +14,7 @@
   <meta name="description" content="{{ news.headline }} - Read the latest legal insights and updates from O.H Shokubi & Co.">
   
   <!-- Keywords (optional) -->
-  <meta name="keywords" content="Law Firm, Nigeria, Arbitration, Lagos, IP Law, {{ news.headline }}">
+  <meta name="keywords" content="Law Firm, Nigeria, Arbitration, Lagos, IP Law, {{ news.headline }}, law, legal, divorce">
 
   <!-- Open Graph for social sharing -->
   <meta property="og:title" content="{{ news.headline }}">
@@ -50,7 +50,7 @@
   
   <!-- Hero Text Content -->
   <div class="container position-relative z-2 text-center py-5">
-    <p class="news-date"> {{ news.created_time_date|date:"jS F Y" }} </p>
+    <p class="news-date"><strong>Published:</strong> {{ news.created_time_date|date:"jS F Y" }} </p>
     <h1 class="news-title">
       {{ news.headline }}
     </h1>
@@ -81,7 +81,7 @@
 
     <!-- News Body Text -->
     <div class="news-body">
-      {{ news.news_body|safe }}
+      <article>{{ news.news_body|safe }}</article>
     </div>
 
     {% if request.user.is_authenticated %}
