@@ -72,6 +72,9 @@ def people(request):
     page_obj = paginator.get_page(page_number)
     return render(request, 'people.html', {'page_obj':page_obj})
 
+def people_search(request):
+    return render(request, 'people_search.html')
+
 def people_info(request, name_for_url):
     lawyers = models.Lawyer.objects.get(name_for_url=name_for_url)
     return render(request, 'people_info.html', {'lawyer':lawyers})
