@@ -31,7 +31,7 @@ class News(models.Model):
         
     def get_absolute_url(self):
         from django.urls import reverse
-        return reverse('news_detail', kwargs={'slug': self.headline_for_url})
+        return reverse('news_detail', kwargs={'headline_for_url': self.headline_for_url})
         
 class Lawyer(models.Model):
     name = models.CharField(max_length=200)
